@@ -4,14 +4,14 @@ on:
 # permissions:
 #   contents: write
 jobs:
-  image-export:
+  clone-sample:
     runs-on: ubuntu-latest
     steps:
     - name: generate token
       id: app-token
       uses: actions/create-github-app-token@v3
       with:
-        app_id: ${{ secrets.TOKEN_GEN_APP_ID }}
+        client_id: ${{ vars.APP_CLIENT_ID }}
         private_key: ${{ secrets.TOKEN_GEN_PRIVATE_KEY }}
 
     - name: Checkout private repo
