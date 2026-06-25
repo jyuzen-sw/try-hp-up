@@ -1,8 +1,8 @@
 name: Clone Private Repo
 on:
   workflow_dispatch:
-permissions:
-  # contents: write
+# permissions:
+#   contents: write
 jobs:
   image-export:
     runs-on: ubuntu-latest
