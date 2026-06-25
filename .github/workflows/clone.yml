@@ -7,9 +7,9 @@ jobs:
   image-export:
     runs-on: ubuntu-latest
     steps:
-    - name: my-app-install token
-      id: my-app
-      uses: getsentry/action-github-app-token@v3.1
+    - name: generate token
+      id: app-token
+      uses: actions/create-github-app-token@v3
       with:
         app_id: ${{ secrets.TOKEN_GEN_APP_ID }}
         private_key: ${{ secrets.TOKEN_GEN_PRIVATE_KEY }}
@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: jyuzen-sw/homepage
-        token: ${{ steps.my-app.outputs.token }}
+        token: ${{ steps.app-token.outputs.token }}
     
     - name: DEBUG dump file list
       run: ls -al
