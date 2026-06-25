@@ -1,0 +1,23 @@
+name: Clone Private Repo
+  workflow_dispatch:
+permissions:
+  # contents: write
+jobs:
+  image-export:
+    runs-on: ubuntu-latest
+    steps:
+    - name: my-app-install token
+      id: my-app
+      uses: getsentry/action-github-app-token@v4
+      with:
+        app_id: ${{ secrets.TOKEN_GEN_APP_ID }}
+        private_key: ${{ secrets.TOKEN_GEN_PRIVATE_KEY }}
+
+    - name: Checkout private repo
+      uses: actions/checkout@v4
+      with:
+        repository: jyuzen-sw/homepage
+        token: ${{ steps.my-app.outputs.token }}
+    
+    - name: DEBUG dump file list
+      run: ls -al
