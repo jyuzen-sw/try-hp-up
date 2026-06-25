@@ -33,9 +33,12 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: jyuzen-sw/homepage
-        ref: main
+        ref: sample
         submodules: recursive
         token: ${{ steps.app-token.outputs.token }}
     
     - name: DEBUG dump file list
       run: ls -al
+
+    - name: install Hugo
+      run: .devcontainer/install-hugo.sh
