@@ -13,10 +13,17 @@ jobs:
       with:
         client-id: ${{ secrets.TOKEN_GEN_APP_CLIENT_ID }}
         private-key: ${{ secrets.TOKEN_GEN_PRIVATE_KEY }}
+        owner: jyuzen-sw
         repository: jyuzen-sw/homepage
-        # permissions: '{"contents":"read", "metadata":"read"}'
+        permissions: '{"contents":"read", "metadata":"read"}'
 
-    - name: Debug token access
+    - name: DEBUG token
+      env:
+        TOKEN: ${{ steps.app-token.outputs.token }}
+      run: |
+        echo "The generated token is masked: ${TOKEN}"
+
+    - name: DEBUG token access
       run: |
         curl -s -H "Authorization: Bearer ${{ steps.app-token.outputs.token }}" \
           -H "Accept: application/vnd.github+json" \
