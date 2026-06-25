@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: my-app-install token
       id: my-app
-      uses: getsentry/action-github-app-token@v4
+      uses: getsentry/action-github-app-token@v3.1
       with:
         app_id: ${{ secrets.TOKEN_GEN_APP_ID }}
         private_key: ${{ secrets.TOKEN_GEN_PRIVATE_KEY }}
