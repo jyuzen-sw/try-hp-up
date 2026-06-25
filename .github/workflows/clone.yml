@@ -13,6 +13,7 @@ jobs:
       with:
         client-id: ${{ secrets.TOKEN_GEN_APP_CLIENT_ID }}
         private-key: ${{ secrets.TOKEN_GEN_PRIVATE_KEY }}
+        repository: jyuzen-sw/homepage
 
     - name: Checkout private repo
       uses: actions/checkout@v4
