@@ -1,4 +1,5 @@
 name: Clone Private Repo
+on:
   workflow_dispatch:
 permissions:
   # contents: write
