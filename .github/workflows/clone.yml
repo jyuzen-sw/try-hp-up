@@ -14,12 +14,14 @@ jobs:
         client-id: ${{ secrets.TOKEN_GEN_APP_CLIENT_ID }}
         private-key: ${{ secrets.TOKEN_GEN_PRIVATE_KEY }}
         repository: jyuzen-sw/homepage
+        permissions: '{"contents":"read"}'
 
     - name: Checkout private repo
       uses: actions/checkout@v4
       with:
         repository: jyuzen-sw/homepage
-        branch: main
+        ref: main
+        submodules: recursive
         token: ${{ steps.app-token.outputs.token }}
     
     - name: DEBUG dump file list
