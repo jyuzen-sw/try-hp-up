@@ -1,8 +1,8 @@
 name: Clone Private Repo
 on:
   workflow_dispatch:
-# permissions:
-#   contents: write
+permissions:
+  contents: read
 jobs:
   clone-sample:
     runs-on: ubuntu-latest
@@ -14,7 +14,7 @@ jobs:
         client-id: ${{ secrets.TOKEN_GEN_APP_CLIENT_ID }}
         private-key: ${{ secrets.TOKEN_GEN_PRIVATE_KEY }}
         repository: jyuzen-sw/homepage
-        permissions: '{"contents":"read", "metadata":"read"}'
+        # permissions: '{"contents":"read", "metadata":"read"}'
 
     - name: Checkout private repo
       uses: actions/checkout@v4
